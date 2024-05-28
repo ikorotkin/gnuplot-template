@@ -1,3 +1,5 @@
+#!/gnuplot
+
 set terminal pngcairo fontscale 3 linewidth 3 font 'Verdana' size 1600,1200
 set output 'figure.png'
 
@@ -17,7 +19,7 @@ set grid xtics ytics ls 13
 
 # Title and axis labels
 set title 'Plot title' font 'Verdana,14'
-set xlabel '{/:Italic x}' # font 'Verdana,14'
+set xlabel '{/:Italic {/Symbol m}m}' # font 'Verdana,14'
 set ylabel '{/:Italic y}'
 
 # Ranges
@@ -26,10 +28,16 @@ set format x '10^{%T}'
 set xrange [1e-3:1e-1]
 set yrange [0:1]
 
+# Double y-axis
+set ytics nomirror autofreq tc lt 8
+set y2tics nomirror autofreq tc lt 4
+set y2label 'Error'
+set y2range [0:2]
+
 # Line styles
-set style line 1 lc rgb '#0060ad' lt 1 dashtype 1   lw 2 pointtype 7 pointsize 2.5
-set style line 2 lc rgb '#dd181f' lt 2 dashtype '-' lw 2 pointtype 5 pointsize 2.5
-set style line 3 lc rgb '#9400d3' lt 3 dashtype '.' lw 2 pointtype 2 pointsize 2.5
+set style line 1 lt 1 dashtype  1  lw 2 pointtype 7 pointsize 2.5 lc rgb '#0060ad'
+set style line 2 lt 2 dashtype '-' lw 2 pointtype 5 pointsize 2.5 lc rgb '#dd181f'
+set style line 3 lt 4 dashtype '.' lw 2 pointtype 2 pointsize 2.5
 
 # Labels
 set label 'Label' textcolor rgb '#777777' font 'Verdana,10' at 0.0012,0.5 front
@@ -42,7 +50,7 @@ plot \
     '+' using ($1):(0.45):(0.55) lc rgb '#dddddd' notitle with filledcurves, \
     file_name u 1:2 w points ls 1 title '{/:Italic a} = 1', \
     file_name u 1:($3*1.2) w linespoints ls 2 title '{/:Italic a} = 2', \
-    f(x) w lines ls 3 notitle
+    f(x) w lines ls 3 notitle axis x1y2
 
 
 # Delete lc rgb to use lt:
