@@ -35,6 +35,7 @@ set xrange [1e-3:1e-1]
 set yrange [0:1]
 
 # Double y-axis
+set ytics nomirror autofreq
 set y2tics nomirror autofreq tc lt 4
 set y2label 'Error' tc lt 4
 set y2range [0:2]
