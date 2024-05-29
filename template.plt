@@ -1,5 +1,6 @@
 #!/gnuplot
 
+# Write to PNG
 set terminal pngcairo fontscale 3 linewidth 3 font 'Verdana' size 1600,1200
 set output 'figure.png'
 
@@ -14,8 +15,8 @@ set key box opaque top left maxrows 3 font 'Verdana,9' width 0 height 0.5
 # Ticks and border
 set border linewidth 1.25
 set tics scale 0.75
-set style line 13 lc rgb 'grey' lt 1 lw 0.5
-set grid xtics ytics ls 13
+set style line 101 lc rgb 'grey' lt 1 lw 0.5
+set grid xtics ytics ls 101
 
 # Minor ticks
 set mxtics
@@ -35,8 +36,9 @@ set yrange [0:1]
 
 # Double y-axis
 set y2tics nomirror autofreq tc lt 4
-set y2label 'Error'
+set y2label 'Error' tc lt 4
 set y2range [0:2]
+set arrow nohead front from graph 1,1 to graph 1,0 lt 4 lw 1.5
 
 # Line styles
 set style line 1 lt 1 dashtype  1  lw 2 pointtype 7 pointsize 2.5 lc rgb '#0060ad'
@@ -59,6 +61,9 @@ plot \
     file_name u 1:($3*1.2) w linespoints ls 2 title '{/:Italic a} = 2', \
     f(x) w lines ls 3 notitle axis x1y2
 
+
+# List of colors:
+# show colornames
 
 # lt:
 # 0 - black dots
