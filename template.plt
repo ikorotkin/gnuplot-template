@@ -17,9 +17,14 @@ set tics scale 0.75
 set style line 13 lc rgb 'grey' lt 1 lw 0.5
 set grid xtics ytics ls 13
 
+# Minor ticks
+set mxtics
+set mytics
+set my2tics # double y-axis
+
 # Title and axis labels
 set title 'Plot title' font 'Verdana,14'
-set xlabel '{/:Italic {/Symbol m}m}' # font 'Verdana,14'
+set xlabel '{/:Italic x} ({/Symbol m}m)' # font 'Verdana,14'
 set ylabel '{/:Italic y}'
 
 # Ranges
@@ -29,7 +34,6 @@ set xrange [1e-3:1e-1]
 set yrange [0:1]
 
 # Double y-axis
-set ytics nomirror autofreq tc lt 8
 set y2tics nomirror autofreq tc lt 4
 set y2label 'Error'
 set y2range [0:2]
@@ -42,6 +46,9 @@ set style line 3 lt 4 dashtype '.' lw 2 pointtype 2 pointsize 2.5
 # Labels
 set label 'Label' textcolor rgb '#777777' font 'Verdana,10' at 0.0012,0.5 front
 
+# Arrows
+set arrow head front from 0.01,0.8 to 0.03,0.72 lt 7 lw 1.5
+
 f(x) = 3*GPVAL_pi*x - 1e-3
 
 file_name = 'data.dat'
@@ -53,7 +60,7 @@ plot \
     f(x) w lines ls 3 notitle axis x1y2
 
 
-# Delete lc rgb to use lt:
+# lt:
 # 0 - black dots
 # 1 - purple line (default)
 # 2 - green line
