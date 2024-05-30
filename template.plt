@@ -68,7 +68,7 @@ plot \
 
 
 # List of colors:
-# show colornames
+# gnuplot -e "show colornames"
 
 # lt:
 # 0 - black dots
