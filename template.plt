@@ -48,13 +48,17 @@ set style line 3 lt 4 dashtype '.' lw 2 pointtype 2 pointsize 2.5
 
 # Labels
 set label '±5%' textcolor rgb '#777777' font 'Verdana,10' at 0.0012,0.5 front
-set label 'Label' textcolor lt 7 font 'Verdana,10' at 0.0095,0.825 front right
+set label '{/:Italic x} = 3·10^{-2}' textcolor lt 7 font 'Verdana,10' at 0.0095,0.76 front right
 
 # Arrows
-set arrow head front from 0.01,0.8 to 0.03,0.72 lt 7 lw 1.5
+set arrow head front from 0.01,0.75 to 0.028,0.67 lt 7 lw 1.5
 
 # Functions
 f(x) = 3*GPVAL_pi*x - 1e-3
+
+# Fitting
+f(x) = a*x + b
+fit f(x) 'data.dat' u 1:3 via a,b
 
 # Data file names
 file_name = 'data.dat'
