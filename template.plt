@@ -47,6 +47,14 @@ color_blue = '#0060ad'
 color_red = '#dd181f'
 color_grey = '#777777'
 
+# 6-color palette (from blue to red)
+color_dark_blue = '#073b4c'
+color_light_blue = '#118ab2'
+color_turquoise = '#06d6a0'
+color_yellow = '#ffd166'
+color_orange = '#f78c6b'
+color_light_red = '#ef476f'
+
 # Line styles
 set style line 1 lt 1 dashtype  1  lw 2 pointtype 7 pointsize 2.5 lc rgb color_blue
 set style line 2 lt 2 dashtype '-' lw 2 pointtype 5 pointsize 2.5 lc rgb color_red
