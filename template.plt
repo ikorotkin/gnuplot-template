@@ -7,6 +7,7 @@ set output 'figure.png'
 
 # Legend
 set key box opaque top left maxrows 3 font 'Verdana,9' width 0 height 0.5
+# unset key # Switch legend off
 
 # Automatic legend titles from the data file
 set key autotitle columnhead
@@ -41,13 +42,18 @@ set y2label 'Error' tc lt 4
 set y2range [0:2]
 set arrow nohead front from graph 1,1 to graph 1,0 lt 4 lw 1.5
 
+# Color codes
+color_blue = '#0060ad'
+color_red = '#dd181f'
+color_grey = '#777777'
+
 # Line styles
-set style line 1 lt 1 dashtype  1  lw 2 pointtype 7 pointsize 2.5 lc rgb '#0060ad'
-set style line 2 lt 2 dashtype '-' lw 2 pointtype 5 pointsize 2.5 lc rgb '#dd181f'
+set style line 1 lt 1 dashtype  1  lw 2 pointtype 7 pointsize 2.5 lc rgb color_blue
+set style line 2 lt 2 dashtype '-' lw 2 pointtype 5 pointsize 2.5 lc rgb color_red
 set style line 3 lt 4 dashtype '.' lw 2 pointtype 2 pointsize 2.5
 
 # Labels
-set label '±5%' textcolor rgb '#777777' font 'Verdana,10' at 0.0012,0.5 front
+set label '±5%' textcolor rgb color_grey font 'Verdana,10' at 0.0012,0.5 front
 set label '{/:Italic x} = 3·10^{-2}' textcolor lt 7 font 'Verdana,10' at 0.0095,0.76 front right
 
 # Arrows
@@ -71,7 +77,15 @@ plot \
     f(x) w lines ls 3 notitle axis x1y2
 
 
-# List of colors:
+# EXTRAS:
+
+# Join two files together and use smoothing:
+# plot "< join a.dat b.dat" u 2:3 smooth bezier w l
+
+# Histogram
+# plot file_name u 1:2 w boxes lc rgb color_blue
+
+# List of built-in colors:
 # gnuplot -e "show colornames"
 
 # lt:
