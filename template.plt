@@ -6,10 +6,10 @@ set terminal pngcairo fontscale 3 linewidth 3 font 'Verdana' size 1600,1200
 set output 'figure.png'
 
 # Legend
-set key box opaque top left maxrows 3 font 'Verdana,9' width 0 height 0.5
+set key box opaque top left maxrows 3 font 'Verdana,10' width 0.5 height 0.5
 # unset key # Switch legend off
 
-# Automatic legend titles from the data file
+# Automatic legend titles taken from the data file
 set key autotitle columnhead
 set datafile separator '\t'
 
@@ -29,9 +29,11 @@ set title 'Plot title' font 'Verdana,14'
 set xlabel '{/:Italic x} ({/Symbol m}m)'
 set ylabel '{/:Italic y}'
 
-# Ranges and scale
+# Log scale
 set logscale x 10
 set format x '10^{%T}'
+
+# Ranges
 set xrange [1e-3:1e-1]
 set yrange [0:1]
 
@@ -71,8 +73,8 @@ set arrow head front from 0.01,0.75 to 0.028,0.67 lt 7 lw 1.5
 f(x) = 3*GPVAL_pi*x - 1e-3
 
 # Fitting
-f(x) = a*x + b
-fit f(x) 'data.dat' u 1:3 via a,b
+# f(x) = a*x + b
+# fit f(x) 'data.dat' u 1:3 via a,b
 
 # Data file names
 file_name = 'data.dat'
